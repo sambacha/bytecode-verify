@@ -27,7 +27,10 @@ placeholder_padding=$(printf '%0.1s' "-"{1..64})
 # Asserting the presence of prerequisite executables
 prerequisites=(jq yarn awk curl shasum uname bc nc)
 for p in "${prerequisites[@]}"; do
-  command -v "$p" >/dev/null 2>&1 || { echo >&2 "I require $p but it's not installed. Aborting."; exit 1; }
+  command -v "$p" >/dev/null 2>&1 || {
+    echo >&2 "I require $p but it's not installed. Aborting."
+    exit 1
+  }
 done
 
 # Asserting the presence of required environment variables
